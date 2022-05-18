@@ -1,0 +1,39 @@
+// body {
+//     background-color: antiquewhite;
+// }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.select-box {
+  margin-bottom: 20px;
+}
+
+.el-pagination {
+  fixed: right;
+}
+
+.card-header {
+  display: flex;
+  align-items: left;
+}
+
+.expand-column {
+  margin: 10px;
+  .expand-column-item{
+      margin: 10px;
+      font: 16px/1.5 Microsoft JhengHei,"\5b8b\4f53",sans-serif;
+  }
+}
+
+.el-card {
+  min-width: 1000px;
+}
+
+.filter {
+  display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+  }

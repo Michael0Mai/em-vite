@@ -1,0 +1,20 @@
+npm run dev
+
+
+
+git add . 
+git status
+git commit -m 'init'
+git push -u origin "master"
+
+npm install eslint --save-dev
+npm install element-plus --save
+npm install @element-plus/icons-vue
+npm install vue-router@4
+npm install vuex@next --save
+npm i -D @types/node 
+npm add -D sass
+npm install axios
+npm install --save nprogress
+npm i --save-dev @types/nprogress
+npm install --save-dev @commitlint/config-conventional @commitlint/cli
