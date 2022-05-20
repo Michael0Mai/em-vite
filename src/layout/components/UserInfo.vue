@@ -6,7 +6,7 @@
     </span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item>个人中心</el-dropdown-item>
+        <!-- <el-dropdown-item>个人中心</el-dropdown-item> -->
         <el-dropdown-item @click="handleLogou">
           退出登录
         </el-dropdown-item>

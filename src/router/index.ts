@@ -26,11 +26,18 @@ const routes: RouteRecordRaw[] = [
       equipmentManageRouter
     ]
   },
-
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/login/index.vue')
+  },
+  {
+    path: '/equipment_detail/:id',
+    name: 'equipment_detail',
+    meta: {
+      requiresAuth: true
+    },
+    component: () => import('../views/equipments/equipment_detail.vue')
   }
 ]
 

@@ -48,29 +48,32 @@
             <el-table-column type="expand">
                 <template #default="scope">
                     <div class="equement-expand">
-                    <div class="expand-column">
-                        <p class="expand-column-item">型号: {{ scope.row.model.name }} - ({{scope.row.model.cname}})</p>
-                        <p class="expand-column-item">供应商: {{ scope.row.model.manufacturer.name }}</p>
-                        <p class="expand-column-item">售后: {{ scope.row.model.manufacturer.after_sales_charger }}</p>
-                        <p class="expand-column-item">售后电话: {{ scope.row.model.manufacturer.after_sales_phone }}</p>
-                        <p class="expand-column-item">技术支持: {{ scope.row.model.manufacturer.technical_support_charger }}</p>
-                        <p class="expand-column-item">技术支持电话: {{ scope.row.model.manufacturer.technical_support_phone }}</p>
-                        <p class="expand-column-item">网址: {{ scope.row.model.manufacturer.web }}</p>
-                    </div>
-                    <div class="box-card expand-column">
-                        <p class="expand-column-item">状态: {{ scope.row.status.status }}</p>
-                        <p class="expand-column-item">性能: {{ scope.row.performance.performance }}</p>
-                        <p class="expand-column-item">价格: {{ scope.row.price }}</p>
-                        <p class="expand-column-item">购买日期: {{ scope.row.purchase_date }}</p>
-                    </div>
-                    <div class="box-card expand-column">
-                        <p class="expand-column-item">负责人: {{ scope.row.charger.name }} - ({{scope.row.charger.phone}})</p>
-                        <p class="expand-column-item">部门: {{ scope.row.charger.department.name }}</p>
-                    </div>
-                    <div class="box-card expand-column remark" >
-                        <p style="text-align:center; font-size:18px;">备注</p>
-                        <p class="expand-column-item">{{ scope.row.remark }}</p>
-                    </div>
+                        <div class="expand-column">
+                            <p class="expand-column-item">型号: {{ scope.row.model.name }} - ({{scope.row.model.cname}})</p>
+                            <p class="expand-column-item">供应商: {{ scope.row.model.manufacturer.name }}</p>
+                            <p class="expand-column-item">售后: {{ scope.row.model.manufacturer.after_sales_charger }}</p>
+                            <p class="expand-column-item">售后电话: {{ scope.row.model.manufacturer.after_sales_phone }}</p>
+                            <p class="expand-column-item">技术支持: {{ scope.row.model.manufacturer.technical_support_charger }}</p>
+                            <p class="expand-column-item">技术支持电话: {{ scope.row.model.manufacturer.technical_support_phone }}</p>
+                            <p class="expand-column-item">网址: {{ scope.row.model.manufacturer.web }}</p>
+                        </div>
+                        <div class="box-card expand-column">
+                            <p class="expand-column-item">状态: {{ scope.row.status.status }}</p>
+                            <p class="expand-column-item">性能: {{ scope.row.performance.performance }}</p>
+                            <p class="expand-column-item">价格: {{ scope.row.price }}</p>
+                            <p class="expand-column-item">购买日期: {{ scope.row.purchase_date }}</p>
+                        </div>
+                        <div class="box-card expand-column">
+                            <p class="expand-column-item">负责人: {{ scope.row.charger.name }} - ({{scope.row.charger.phone}})</p>
+                            <p class="expand-column-item">部门: {{ scope.row.charger.department.name }}</p>
+                            <div class="qrcode" :id="scope.row.id">
+                                <qrcode-vue :value="'http://' + ipAddr + '/#/equipment_detail/' + scope.row.id" :size="150" level="H" />
+                            </div>
+                        </div>
+                        <div class="box-card expand-column remark" >
+                            <p style="text-align:center; font-size:18px;">备注</p>
+                            <p class="expand-column-item">{{ scope.row.remark }}</p>
+                        </div>
                     </div>
                 </template>
             </el-table-column>
@@ -105,22 +108,24 @@
         />
     </el-card>
     <equipment-Form
-  v-model="formVisible"
-  :equipmentId = "equipmentId"
-  @closed = "equipmentId=null"
-  @success = "handleFormSuccess"
-  />
+        v-model="formVisible"
+        :equipmentId = "equipmentId"
+        @closed = "equipmentId=null"
+        @success = "handleFormSuccess"
+    />
 </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, reactive, onMounted } from 'vue'
 import { ElMessage } from 'element-plus'
+import QrcodeVue from 'qrcode.vue'
 import { getEquipmentData, deletEquipment } from '@/api/equipment'
 import { getModelNames } from '@/api/equipment_model'
 import { getStatusData } from '@/api/equipment_status'
 import { isAdmin } from '@/utils/isAdmin'
 import equipmentForm from './equipmentForm.vue'
+
 
 const list = ref([])
 const ismanager = ref(false)
@@ -129,6 +134,7 @@ const counts = ref()
 const formVisible = ref(false)
 const ModelNames = ref([])
 const StatusNames = ref([])
+const ipAddr = location.host
 const equipmentId = ref<string | null>(null)
 
 const equipmentParams = reactive({ // 搜索用
@@ -202,4 +208,12 @@ const handleFormSuccess = () => {
         grid-column: 1 / 4;
     }
 }
+
+// .equement-expand {
+//     display: flex;
+//     flex-wrap: wrap;
+//     .expand-column {
+//          width: 33.3%;
+//     }
+// }
 </style>
