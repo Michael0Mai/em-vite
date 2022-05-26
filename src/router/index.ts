@@ -29,7 +29,10 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     name: 'login',
-    component: () => import('../views/login/index.vue')
+    component: () => import('../views/login/index.vue'),
+    meta: {
+      title: '登录'
+    }
   },
   {
     path: '/equipment_detail/:id',
@@ -47,6 +50,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from) => {
+  document.title = to.meta.title ? to.meta.title : '设备台账'
   nprogress.start()
   if (to.meta.requiresAuth && !store.state.token) {
     // 此路由需要授权，请检查是否已登录
