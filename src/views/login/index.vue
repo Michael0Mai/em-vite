@@ -118,53 +118,107 @@ const handleSubmit = async () => {
 
 </script>
 
-<style lang="scss" scoped>
-.login-container {
-  min-width: 400px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  // background-color: #2d3a4b;
-  background-image: url("http://www.uux.cn/attachments/2009/12/1_200912062044441rp1P.jpg");
-  background-size:100% 100%;
+<style lang="scss">
+
+@media screen and (orientation: landscape) {
+  .login-container {
+    min-width: 400px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: #2d3a4b;
+    background-image: url("http://www.uux.cn/attachments/2009/12/1_200912062044441rp1P.jpg");
+    background-size:100% 100%;
+  }
+
+  .login-form {
+    padding: 30px;
+    border-radius: 6px;
+    background: #fff;
+    min-width: 350px;
+    .login-form__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+
+    .el-form-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .login__form-title {
+      display: flex;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+
+    .login-logo {
+      width: 271px;
+      height: 230px;
+    }
+    .imgcode-wrap {
+      display: flex;
+      align-items: center;
+      .imgcode {
+        height: 37px;
+      }
+    }
+  }
 }
 
-.login-form {
-  padding: 30px;
-  border-radius: 6px;
-  background: #fff;
-  min-width: 350px;
-  .login-form__header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 30px;
+@media screen and (orientation: portrait) {
+
+  #app{
+    min-width: 100%;
+    min-height: 1000px;
   }
 
-  .el-form-item:last-child {
-    margin-bottom: 0;
-  }
-
-  .login__form-title {
-    display: flex;
-    justify-content: center;
-    color: #fff;
-  }
-
-  .submit-button {
+  .login-container {
+    min-height: 1000px;
     width: 100%;
-  }
-
-  .login-logo {
-    width: 271px;
-    height: 230px;
-  }
-  .imgcode-wrap {
     display: flex;
+    justify-content: center;
     align-items: center;
-    .imgcode {
-      height: 37px;
+    background-color: #2d3a4b;
+    // background-image: url("http://www.uux.cn/attachments/2009/12/1_200912062044441rp1P.jpg");
+    background-size:100% 100%;
+  }
+.login-form {
+    padding: 10px;
+    border-radius: 3px;
+    background: #fff;
+    min-width: 300px;
+    min-height: 420px;
+    .login-form__header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 30px;
+    }
+
+    .el-form-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .login__form-title {
+      display: flex;
+      justify-content: center;
+      color: #fff;
+    }
+
+    .submit-button {
+      width: 100%;
+    }
+
+    .login-logo {
+      width: 100%;
+      height: 230px;
     }
   }
 }
